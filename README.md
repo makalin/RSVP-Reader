@@ -86,6 +86,28 @@ Build:
 npm run build
 ```
 
+## Deploy to GitHub Pages
+
+**Option A – Automatic (recommended)**
+
+1. Push your repo to GitHub.
+2. In the repo: **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Push to the `main` branch; the workflow will build and deploy.
+
+Your site will be at: `https://<username>.github.io/RSVP-Reader/`
+
+**Option B – Deploy from your machine**
+
+```bash
+npm run deploy
+```
+
+Requires the repo to exist on GitHub. The first time you use GitHub Pages, enable it under **Settings → Pages** (Source: **Deploy from a branch**, branch: `gh-pages`).
+
+**If your repo name is not `RSVP-Reader`:**  
+Edit `vite.config.ts` and change the `base` path to `'/your-repo-name/'`.
+
 ## Design Philosophy
 
 * One focal point
