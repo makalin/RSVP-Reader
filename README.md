@@ -1,5 +1,7 @@
 # RSVP Reader
 
+**Live demo:** [https://makalin.github.io/RSVP-Reader/](https://makalin.github.io/RSVP-Reader/)
+
 [🇹🇷 Türkçe](README.tr.md)
 
 Minimal **Rapid Serial Visual Presentation (RSVP)** web reader.  

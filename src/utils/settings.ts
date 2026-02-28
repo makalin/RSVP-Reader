@@ -29,7 +29,7 @@ export const DEFAULT_SETTINGS: ReaderSettings = {
   fontSize: 4,
   fontFamily: 'system-ui',
   showORP: true,
-  orpColor: '#4a9eff',
+  orpColor: '#e53935',
   wpm: 300,
   chunkSize: 1,
   punctuationPause: 0.5,

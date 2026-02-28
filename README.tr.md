@@ -1,5 +1,9 @@
 # RSVP Reader
 
+**Canlı demo:** [https://makalin.github.io/RSVP-Reader/](https://makalin.github.io/RSVP-Reader/)
+
+[🇬🇧 English](README.md)
+
 Minimal **Hızlı Seri Görsel Sunum (RSVP)** web okuyucu.  
 Belgeleri **tek kelime** halinde, ekranın ortasında, ayarlanabilir **DKM** (dakikada kelime) ile okuyun — dikkat dağıtıcısız ve hızlı.
 

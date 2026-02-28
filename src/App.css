@@ -51,7 +51,7 @@
 
 .app-textarea:focus {
   outline: none;
-  border-color: var(--accent, #4a9eff);
+  border-color: var(--accent, #e53935);
 }
 
 .app-actions {
@@ -72,12 +72,12 @@
 }
 
 .app-button-primary {
-  background: var(--accent, #4a9eff);
+  background: var(--accent, #e53935);
   color: #fff;
 }
 
 .app-button-primary:hover:not(:disabled) {
-  background: var(--accent-hover, #5fb0ff);
+  background: var(--accent-hover, #ff5252);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
 }
@@ -90,7 +90,7 @@
 
 .app-button-secondary:hover {
   background: var(--bg-primary, #252525);
-  border-color: var(--accent, #4a9eff);
+  border-color: var(--accent, #e53935);
   color: var(--text-primary, #fff);
 }
 
@@ -135,7 +135,7 @@
   background: rgba(74, 158, 255, 0.1);
   border: 1px solid rgba(74, 158, 255, 0.3);
   border-radius: 6px;
-  color: var(--accent, #4a9eff);
+  color: var(--accent, #e53935);
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -168,7 +168,7 @@
   border-radius: 4px;
   font-family: 'Monaco', 'Courier New', monospace;
   font-size: 0.85rem;
-  color: var(--accent, #4a9eff);
+  color: var(--accent, #e53935);
   margin-right: 0.5rem;
 }
 

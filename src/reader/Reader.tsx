@@ -268,48 +268,55 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
   const themeColors = getThemeColors(settings.theme);
   const fontSize = `${settings.fontSize}rem`;
   
-  // Calculate ORP (Optimal Recognition Point)
-  const orpPosition = currentWord.length > 0 && settings.showORP
-    ? Math.floor(currentWord.length / 3)
-    : -1;
-  const wordBeforeORP = orpPosition >= 0 ? currentWord.substring(0, orpPosition) : '';
-  const wordAtORP = orpPosition >= 0 ? currentWord.substring(orpPosition, orpPosition + 1) : '';
-  const wordAfterORP = orpPosition >= 0 ? currentWord.substring(orpPosition + 1) : currentWord;
+  // ORP (Optimal Recognition Point): red letter index so it stays at fixed screen position
+  // With monospace + translateX(-orpIndex ch), the red letter never moves — zero eye movement
+  const orpIndex = currentWord.length > 0
+    ? (settings.showORP ? Math.floor(currentWord.length / 3) : Math.floor(currentWord.length / 2))
+    : 0;
+  const wordBeforeORP = currentWord ? currentWord.substring(0, orpIndex) : '';
+  const wordAtORP = currentWord ? currentWord.substring(orpIndex, orpIndex + 1) : '';
+  const wordAfterORP = currentWord ? currentWord.substring(orpIndex + 1) : '';
 
   const wordCount = text.split(/\s+/).length;
 
   return (
     <div className="reader-container" ref={containerRef}>
-      <div className="reader-display" style={{ fontFamily: settings.fontFamily }}>
-        <div className="word-display" ref={wordRef}>
+      <div className="reader-display">
+        <div className="word-display word-display-focal" ref={wordRef}>
           {currentWord && (
-            <span
-              className="word-content"
+            <div
+              className="word-focal-wrapper"
               style={{
+                transform: `translateX(-${orpIndex}ch)`,
+                fontFamily: 'ui-monospace, "SF Mono", "Cascadia Code", "Consolas", "Liberation Mono", monospace',
                 fontSize,
-                color: themeColors.wordDisplay,
               }}
             >
-              {settings.showORP && orpPosition >= 0 ? (
-                <>
-                  <span className="word-before" style={{ color: themeColors.wordBefore }}>
-                    {wordBeforeORP}
-                  </span>
-                  <span
-                    className="word-orp"
-                    style={{
-                      color: settings.orpColor,
-                      textShadow: `0 0 10px ${settings.orpColor}40`,
-                    }}
-                  >
-                    {wordAtORP}
-                  </span>
-                  <span className="word-after">{wordAfterORP}</span>
-                </>
-              ) : (
-                <span>{currentWord}</span>
-              )}
-            </span>
+              <span
+                className="word-content"
+                style={{ color: themeColors.wordDisplay }}
+              >
+                {settings.showORP ? (
+                  <>
+                    <span className="word-before" style={{ color: themeColors.wordBefore }}>
+                      {wordBeforeORP}
+                    </span>
+                    <span
+                      className="word-orp"
+                      style={{
+                        color: settings.orpColor,
+                        textShadow: `0 0 10px ${settings.orpColor}40`,
+                      }}
+                    >
+                      {wordAtORP}
+                    </span>
+                    <span className="word-after">{wordAfterORP}</span>
+                  </>
+                ) : (
+                  <span>{currentWord}</span>
+                )}
+              </span>
+            </div>
           )}
         </div>
       </div>

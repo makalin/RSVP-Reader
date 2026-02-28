@@ -9,11 +9,11 @@
   --bg-surface: #1a1a1a;
   --text-primary: #e0e0e0;
   --text-secondary: #aaa;
-  --accent: #4a9eff;
-  --accent-hover: #5fb0ff;
+  --accent: #e53935;
+  --accent-hover: #ff5252;
   --border: #333;
   --word-display: #fff;
-  --word-orp: #4a9eff;
+  --word-orp: #e53935;
   --word-before: #888;
 }
 
@@ -75,7 +75,7 @@ body {
 
 .text-input:focus {
   outline: none;
-  border-color: #4a9eff;
+  border-color: var(--accent);
 }
 
 .file-input {
@@ -102,12 +102,27 @@ body {
   user-select: none;
 }
 
+/* Fixed focal point: red letter always at same screen position for zero eye movement */
+.word-display-focal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.word-focal-wrapper {
+  display: inline-block;
+  /* Monospace + translateX(-Nch) in JS keeps ORP character fixed on screen */
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .word-content {
   font-size: 4rem;
   font-weight: 300;
   line-height: 1.2;
   color: var(--word-display);
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
 }
 
 .word-before {
@@ -117,7 +132,7 @@ body {
 .word-orp {
   color: var(--word-orp);
   font-weight: 500;
-  text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+  text-shadow: 0 0 10px rgba(229, 57, 53, 0.5);
 }
 
 .word-after {
