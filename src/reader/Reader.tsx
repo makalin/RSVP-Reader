@@ -236,7 +236,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
   const handleAddBookmark = () => {
     if (!engine || !text) return;
     
-    const bookmark = addBookmark({
+    addBookmark({
       title: title || 'Untitled',
       text: currentWord || text.substring(0, 100),
       position: currentIndex,

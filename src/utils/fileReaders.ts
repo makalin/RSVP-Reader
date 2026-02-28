@@ -28,22 +28,23 @@ export async function readPDFFile(file: File): Promise<FileReadResult> {
     
     let fullText = '';
     const metadata = await pdf.getMetadata();
+    const info = metadata?.info as { Title?: string; [key: string]: unknown } | undefined;
     
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
       const textContent = await page.getTextContent();
       const pageText = textContent.items
-        .map((item: any) => item.str)
+        .map((item: unknown) => (item && typeof item === 'object' && 'str' in item ? (item as { str: string }).str : ''))
         .join(' ');
       fullText += pageText + '\n\n';
     }
     
     return {
       text: fullText.trim(),
-      title: metadata?.info?.Title || file.name,
+      title: info?.Title || file.name,
       metadata: {
         pages: pdf.numPages,
-        ...metadata?.info,
+        ...info,
       },
     };
   } catch (error) {
@@ -63,17 +64,18 @@ export async function readEPUBFile(file: File): Promise<FileReadResult> {
     
     let fullText = '';
     const spine = await book.loaded.spine;
+    const spineItems = Array.isArray(spine) ? spine : (spine as { items: unknown[] }).items ?? [];
     
-    for (const item of spine.items) {
+    for (const item of spineItems) {
       try {
-        const section = await item.load(book.load.bind(book));
-        if (section) {
-          // Try to get text from section
-          const body = section.querySelector('body');
+        const section = await (item as { load: (fn: (url: string) => Promise<unknown>) => Promise<unknown> }).load(book.load.bind(book));
+        if (section && typeof section === 'object' && 'querySelector' in section) {
+          const doc = section as Document;
+          const body = doc.querySelector('body');
           if (body) {
             fullText += body.innerText || body.textContent || '';
           } else {
-            fullText += section.innerText || section.textContent || '';
+            fullText += (doc as Document & { innerText?: string }).innerText || doc.textContent || '';
           }
           fullText += '\n\n';
         }
