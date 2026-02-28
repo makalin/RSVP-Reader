@@ -12,6 +12,8 @@ export type I18nKey =
   | 'app.supportedFormats'
   | 'app.sampleEnglish'
   | 'app.sampleTurkish'
+  | 'app.sampleLoad'
+  | 'app.githubLink'
   | 'reader.pause'
   | 'reader.play'
   | 'reader.restart'
@@ -24,6 +26,14 @@ export type I18nKey =
   | 'reader.bookmarks'
   | 'reader.hideUi'
   | 'reader.showUi'
+  | 'reader.home'
+  | 'reader.stop'
+  | 'reader.shortcutPlay'
+  | 'reader.shortcutExit'
+  | 'reader.shortcutSpeed'
+  | 'reader.shortcutSkip'
+  | 'reader.shortcutJump'
+  | 'reader.shortcutSave'
   | 'settings.title'
   | 'settings.themeAndDisplay'
   | 'settings.language'
@@ -83,6 +93,8 @@ const strings: Record<Locale, Record<I18nKey, string>> = {
     'app.supportedFormats': 'Supported Formats',
     'app.sampleEnglish': 'Load English sample',
     'app.sampleTurkish': 'Load Turkish sample',
+    'app.sampleLoad': 'Load sample',
+    'app.githubLink': 'GitHub',
 
     'reader.pause': '⏸ Pause',
     'reader.play': '▶ Play',
@@ -96,6 +108,14 @@ const strings: Record<Locale, Record<I18nKey, string>> = {
     'reader.bookmarks': '🔖 Bookmarks',
     'reader.hideUi': 'Hide UI',
     'reader.showUi': 'Show UI (H)',
+    'reader.home': '← Main page',
+    'reader.stop': '■ Stop',
+    'reader.shortcutPlay': 'Space Play',
+    'reader.shortcutExit': 'Esc Exit',
+    'reader.shortcutSpeed': '↑↓ Speed',
+    'reader.shortcutSkip': '←→ Skip',
+    'reader.shortcutJump': 'G Jump',
+    'reader.shortcutSave': 'Ctrl+S Save',
 
     'settings.title': 'Settings',
     'settings.themeAndDisplay': 'Theme & Display',
@@ -157,6 +177,8 @@ const strings: Record<Locale, Record<I18nKey, string>> = {
     'app.supportedFormats': 'Desteklenen Formatlar',
     'app.sampleEnglish': 'İngilizce örnek yükle',
     'app.sampleTurkish': 'Türkçe örnek yükle',
+    'app.sampleLoad': 'Örnek yükle',
+    'app.githubLink': 'GitHub',
 
     'reader.pause': '⏸ Duraklat',
     'reader.play': '▶ Oynat',
@@ -170,6 +192,14 @@ const strings: Record<Locale, Record<I18nKey, string>> = {
     'reader.bookmarks': '🔖 Yer İmleri',
     'reader.hideUi': 'Arayüzü Gizle',
     'reader.showUi': 'Arayüzü Göster (H)',
+    'reader.home': '← Ana sayfa',
+    'reader.stop': '■ Durdur',
+    'reader.shortcutPlay': 'Space Oynat',
+    'reader.shortcutExit': 'Esc Çık',
+    'reader.shortcutSpeed': '↑↓ Hız',
+    'reader.shortcutSkip': '←→ Sar',
+    'reader.shortcutJump': 'G Git',
+    'reader.shortcutSave': 'Ctrl+S Kaydet',
 
     'settings.title': 'Ayarlar',
     'settings.themeAndDisplay': 'Tema ve Görünüm',

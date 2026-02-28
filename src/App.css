@@ -24,6 +24,25 @@
   gap: 1rem;
 }
 
+.app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-github-link {
+  color: var(--text-secondary, #aaa);
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.app-github-link:hover {
+  color: var(--accent, #e53935);
+}
+
 .app-lang {
   padding: 0.5rem 0.75rem;
   background: var(--bg-surface, #1a1a1a);
@@ -80,13 +99,7 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
-}
-
-.app-samples {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
+  align-items: center;
   flex-wrap: wrap;
 }
 

@@ -48,7 +48,7 @@ function App() {
   };
 
   if (text) {
-    return <Reader text={text} title={title} />;
+    return <Reader text={text} title={title} onBackToHome={() => setText('')} />;
   }
 
   const loadSample = async (filename: 'sample_en.txt' | 'sample_tr.txt') => {
@@ -73,16 +73,27 @@ function App() {
       <div className="app-container">
         <div className="app-header">
           <h1>{t('app.title')}</h1>
-          <select
-            className="app-lang"
-            value={settings.language}
-            onChange={(e) => setSettings((s) => ({ ...s, language: e.target.value as any }))}
-            aria-label="Language"
-          >
-            <option value="auto">{t('settings.auto')}</option>
-            <option value="en">English</option>
-            <option value="tr">Türkçe</option>
-          </select>
+          <div className="app-header-right">
+            <a
+              href="https://github.com/makalin/RSVP-Reader"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="app-github-link"
+              aria-label="GitHub"
+            >
+              {t('app.githubLink')}
+            </a>
+            <select
+              className="app-lang"
+              value={settings.language}
+              onChange={(e) => setSettings((s) => ({ ...s, language: e.target.value as any }))}
+              aria-label="Language"
+            >
+              <option value="auto">{t('settings.auto')}</option>
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+            </select>
+          </div>
         </div>
         <p className="app-subtitle">
           {t('app.subtitle')}
@@ -110,11 +121,11 @@ function App() {
               onClick={handleLoadText}
               disabled={!inputText.trim()}
             >
-              {t('app.startReading')}
+              ▶ {t('app.startReading')}
             </button>
 
             <label className="app-button app-button-secondary">
-              {loading ? t('app.loading') : t('app.uploadFile')}
+              📁 {loading ? t('app.loading') : t('app.uploadFile')}
               <input
                 type="file"
                 accept=".txt,.md,.html,.pdf,.epub"
@@ -123,25 +134,26 @@ function App() {
                 disabled={loading}
               />
             </label>
-          </div>
 
-          <div className="app-samples">
-            <button
-              className="app-button app-button-secondary"
-              onClick={() => loadSample('sample_en.txt')}
-              disabled={loading}
-              type="button"
-            >
-              {t('app.sampleEnglish')}
-            </button>
-            <button
-              className="app-button app-button-secondary"
-              onClick={() => loadSample('sample_tr.txt')}
-              disabled={loading}
-              type="button"
-            >
-              {t('app.sampleTurkish')}
-            </button>
+            {locale === 'tr' ? (
+              <button
+                className="app-button app-button-secondary"
+                onClick={() => loadSample('sample_tr.txt')}
+                disabled={loading}
+                type="button"
+              >
+                🧪 {t('app.sampleLoad')}
+              </button>
+            ) : (
+              <button
+                className="app-button app-button-secondary"
+                onClick={() => loadSample('sample_en.txt')}
+                disabled={loading}
+                type="button"
+              >
+                🧪 {t('app.sampleLoad')}
+              </button>
+            )}
           </div>
         </div>
 

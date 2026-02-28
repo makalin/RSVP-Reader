@@ -24,7 +24,7 @@ const themes: Record<'dark' | 'light', ThemeColors> = {
     border: '#333',
     wordDisplay: '#fff',
     wordORP: '#e53935',
-    wordBefore: '#888',
+    wordBefore: '#fff',
   },
   light: {
     background: '#ffffff',
@@ -36,7 +36,7 @@ const themes: Record<'dark' | 'light', ThemeColors> = {
     border: '#ddd',
     wordDisplay: '#000',
     wordORP: '#c62828',
-    wordBefore: '#666',
+    wordBefore: '#000',
   },
 };
 
