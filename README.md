@@ -1,5 +1,7 @@
 # RSVP Reader
 
+[🇹🇷 Türkçe](README.tr.md)
+
 Minimal **Rapid Serial Visual Presentation (RSVP)** web reader.  
 Read any document **one word at a time**, centered on screen, with adjustable **WPM** — distraction-free and fast.
 
