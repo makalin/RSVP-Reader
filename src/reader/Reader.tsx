@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { RSVPEngine, RSVPEvent } from './rsvpEngine';
 import { Slider } from '../ui/Slider';
 import { SettingsPanel } from '../components/SettingsPanel';
@@ -8,6 +8,7 @@ import { ReaderSettings, loadSettings, saveSettings } from '../utils/settings';
 import { applyTheme, getThemeColors } from '../utils/theme';
 import { addBookmark, loadBookmarks, removeBookmark, Bookmark } from '../utils/bookmarks';
 import { loadStats, saveStats, updateStats, ReadingStats } from '../utils/stats';
+import { resolveLocale, t as tt } from '../utils/i18n';
 import './styles/reader.css';
 
 interface ReaderProps {
@@ -16,12 +17,13 @@ interface ReaderProps {
 }
 
 export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
-  const [settings, setSettings] = useState<ReaderSettings>(loadSettings());
+  const initialSettings = useMemo(() => loadSettings(), []);
+  const [settings, setSettings] = useState<ReaderSettings>(initialSettings);
   const [engine, setEngine] = useState<RSVPEngine | null>(null);
   const [currentWord, setCurrentWord] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showUI, setShowUI] = useState(!settings.minimalMode);
+  const [showUI, setShowUI] = useState(() => !initialSettings.uiHidden && !initialSettings.minimalMode);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [total, setTotal] = useState(0);
@@ -36,6 +38,9 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const wordRef = useRef<HTMLDivElement>(null);
 
+  const locale = useMemo(() => resolveLocale(settings.language), [settings.language]);
+  const t = (key: Parameters<typeof tt>[1]) => tt(locale, key);
+
   // Apply theme
   useEffect(() => {
     applyTheme(settings.theme);
@@ -45,6 +50,11 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
   useEffect(() => {
     saveSettings(settings);
   }, [settings]);
+
+  // Keep UI visibility in sync with persisted settings
+  useEffect(() => {
+    setShowUI(!settings.uiHidden && !settings.minimalMode);
+  }, [settings.uiHidden, settings.minimalMode]);
 
   // Initialize engine
   useEffect(() => {
@@ -168,7 +178,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
         case 'h':
         case 'H':
           e.preventDefault();
-          setShowUI(prev => !prev);
+          setSettings(prev => ({ ...prev, uiHidden: !prev.uiHidden }));
           break;
         case 'r':
         case 'R':
@@ -278,6 +288,9 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
   const wordAfterORP = currentWord ? currentWord.substring(orpIndex + 1) : '';
 
   const wordCount = text.split(/\s+/).length;
+  const wordLabel = locale === 'tr' ? 'kelime' : 'words';
+  const wpmLabel = locale === 'tr' ? 'DKM' : 'WPM';
+  const translateCh = currentWord ? currentWord.length / 2 - orpIndex : 0;
 
   return (
     <div className="reader-container" ref={containerRef}>
@@ -287,8 +300,8 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
             <div
               className="word-focal-wrapper"
               style={{
-                transform: `translateX(-${orpIndex}ch)`,
-                fontFamily: 'ui-monospace, "SF Mono", "Cascadia Code", "Consolas", "Liberation Mono", monospace',
+                transform: `translateX(${translateCh}ch)`,
+                fontFamily: '"Liberation Mono", "Courier New", Consolas, ui-monospace, monospace',
                 fontSize,
               }}
             >
@@ -336,7 +349,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
                 }
               }}
             >
-              {isPlaying ? '⏸ Pause' : '▶ Play'}
+              {isPlaying ? t('reader.pause') : t('reader.play')}
             </button>
             <button
               className="control-button"
@@ -350,7 +363,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
                 setSessionStartTime(Date.now());
               }}
             >
-              ↻ Restart
+              {t('reader.restart')}
             </button>
             <button
               className="control-button"
@@ -362,7 +375,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
                 setProgress(engine?.getProgress() || 0);
               }}
             >
-              ← Back
+              {t('reader.back')}
             </button>
             <button
               className="control-button"
@@ -374,37 +387,37 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
                 setProgress(engine?.getProgress() || 0);
               }}
             >
-              Forward →
+              {t('reader.forward')}
             </button>
             <button
               className="control-button"
               onClick={toggleFullscreen}
             >
-              {isFullscreen ? '⤓ Exit' : '⤢ Fullscreen'}
+              {isFullscreen ? t('reader.exitFullscreen') : t('reader.fullscreen')}
             </button>
             <button
               className="control-button"
               onClick={() => setShowSettings(true)}
             >
-              ⚙ Settings
+              {t('reader.settings')}
             </button>
             <button
               className="control-button"
               onClick={() => setShowStats(true)}
             >
-              📊 Stats
+              {t('reader.stats')}
             </button>
             <button
               className="control-button"
               onClick={() => setShowBookmarks(true)}
             >
-              🔖 Bookmarks ({bookmarks.length})
+              {t('reader.bookmarks')} ({bookmarks.length})
             </button>
             <button
               className="control-button"
-              onClick={() => setShowUI(false)}
+              onClick={() => setSettings(prev => ({ ...prev, uiHidden: true }))}
             >
-              Hide UI
+              {t('reader.hideUi')}
             </button>
           </div>
 
@@ -444,7 +457,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
                   </div>
                   <div className="progress-text">
                     {currentIndex} / {total} ({Math.round(progress * 100)}%)
-                    {settings.showStats && ` • ${settings.wpm} WPM • ${wordCount} words`}
+                    {settings.showStats && ` • ${settings.wpm} ${wpmLabel} • ${wordCount} ${wordLabel}`}
                   </div>
                 </div>
               )}
@@ -456,9 +469,9 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
       {!showUI && (
         <button
           className="show-ui-button"
-          onClick={() => setShowUI(true)}
+          onClick={() => setSettings(prev => ({ ...prev, uiHidden: false }))}
         >
-          Show UI (H)
+          {t('reader.showUi')}
         </button>
       )}
 
@@ -467,6 +480,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
           settings={settings}
           onSettingsChange={setSettings}
           onClose={() => setShowSettings(false)}
+          locale={locale}
         />
       )}
 
@@ -477,6 +491,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
           currentProgress={progress}
           wordsInDocument={wordCount}
           onClose={() => setShowStats(false)}
+          locale={locale}
         />
       )}
 
@@ -486,6 +501,7 @@ export const Reader: React.FC<ReaderProps> = ({ text, title }) => {
           onClose={() => setShowBookmarks(false)}
           onJumpToBookmark={handleJumpToBookmark}
           onDeleteBookmark={handleDeleteBookmark}
+          locale={locale}
         />
       )}
     </div>

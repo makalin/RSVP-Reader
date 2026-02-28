@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Bookmark, updateBookmark } from '../utils/bookmarks';
+import { Locale, t as tt } from '../utils/i18n';
 import './BookmarksPanel.css';
 
 interface BookmarksPanelProps {
@@ -7,6 +8,7 @@ interface BookmarksPanelProps {
   onClose: () => void;
   onJumpToBookmark: (position: number) => void;
   onDeleteBookmark: (id: string) => void;
+  locale: Locale;
 }
 
 export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
@@ -14,9 +16,12 @@ export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
   onClose,
   onJumpToBookmark,
   onDeleteBookmark,
+  locale,
 }) => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editNote, setEditNote] = useState('');
+
+  const t = (key: Parameters<typeof tt>[1]) => tt(locale, key);
 
   const handleEdit = (bookmark: Bookmark) => {
     setEditingId(bookmark.id);
@@ -33,15 +38,15 @@ export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
     <div className="bookmarks-overlay" onClick={onClose}>
       <div className="bookmarks-panel" onClick={(e) => e.stopPropagation()}>
         <div className="bookmarks-header">
-          <h2>Bookmarks ({bookmarks.length})</h2>
+          <h2>{t('bookmarks.title')} ({bookmarks.length})</h2>
           <button className="bookmarks-close" onClick={onClose}>×</button>
         </div>
 
         <div className="bookmarks-content">
           {bookmarks.length === 0 ? (
             <div className="bookmarks-empty">
-              <p>No bookmarks yet.</p>
-              <p className="bookmarks-hint">Press 'B' to bookmark your current position.</p>
+              <p>{t('bookmarks.empty')}</p>
+              <p className="bookmarks-hint">{t('bookmarks.hint')}</p>
             </div>
           ) : (
             <div className="bookmarks-list">
@@ -53,14 +58,14 @@ export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
                       <button
                         className="bookmark-action"
                         onClick={() => onJumpToBookmark(bookmark.position)}
-                        title="Jump to position"
+                        title={t('bookmarks.jump')}
                       >
                         →
                       </button>
                       <button
                         className="bookmark-action"
                         onClick={() => onDeleteBookmark(bookmark.id)}
-                        title="Delete bookmark"
+                        title={t('bookmarks.delete')}
                       >
                         ×
                       </button>
@@ -75,12 +80,12 @@ export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
                       <textarea
                         value={editNote}
                         onChange={(e) => setEditNote(e.target.value)}
-                        placeholder="Add a note..."
+                        placeholder={`${t('bookmarks.addNote')}...`}
                         rows={2}
                       />
                       <div className="bookmark-edit-actions">
-                        <button onClick={() => handleSaveEdit(bookmark.id)}>Save</button>
-                        <button onClick={() => setEditingId(null)}>Cancel</button>
+                        <button onClick={() => handleSaveEdit(bookmark.id)}>{t('bookmarks.save')}</button>
+                        <button onClick={() => setEditingId(null)}>{t('bookmarks.cancel')}</button>
                       </div>
                     </div>
                   ) : (
@@ -93,11 +98,11 @@ export const BookmarksPanel: React.FC<BookmarksPanelProps> = ({
                       className="bookmark-edit-btn"
                       onClick={() => handleEdit(bookmark)}
                     >
-                      {bookmark.note ? 'Edit note' : 'Add note'}
+                      {bookmark.note ? t('bookmarks.editNote') : t('bookmarks.addNote')}
                     </button>
                   )}
                   <div className="bookmark-meta">
-                    Position: {bookmark.position} • {new Date(bookmark.timestamp).toLocaleString()}
+                    {t('bookmarks.position')}: {bookmark.position} • {new Date(bookmark.timestamp).toLocaleString()}
                   </div>
                 </div>
               ))}

@@ -1,0 +1,7 @@
+Bugün İstanbul’da hava garipti. Sabah 07:12’de alarm çaldı, ama ben 07:13’te “bir dakika daha” diyerek telefonu susturdum. O bir dakika, klasik bir şekilde, on iki dakikaya dönüştü. Pencereyi açtım; dışarıdan ince bir uğultu, uzaktan bir vapur düdüğü, aşağıda ise acele adımlar… Bir de kedi kavgası. Tam bir şehir senfonisi.
+
+Kahve hazır olunca ilk yudumu aldım. “Acı ama doğru,” diye düşündüm. Metni hızlı okumaya karar verdim: Bir kelime. Sonra bir kelime daha. Gözün kaçacağı yer yok. Nokta “dur” der, virgül “nefes al” der.
+
+Test için kısa kelimeler: ve, de, ki, mi. Uzun kelimeler: özelleştirilebilirlik, eşzamanlılaştırılabilir. Sayılar: 0, 1, 2, 42, 256, 1024. Semboller: % + - / * = @ #.
+
+Eğer kırmızı odak harfi hep aynı yerde kalırsa, gözlerin sabit durur ve okuma hızın artar.

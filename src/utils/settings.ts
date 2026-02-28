@@ -1,4 +1,7 @@
 export interface ReaderSettings {
+  // Language
+  language: 'en' | 'tr' | 'auto';
+
   // Display
   theme: 'dark' | 'light' | 'auto';
   fontSize: number;
@@ -22,9 +25,11 @@ export interface ReaderSettings {
   minimalMode: boolean;
   showControls: boolean;
   compactControls: boolean;
+  uiHidden: boolean;
 }
 
 export const DEFAULT_SETTINGS: ReaderSettings = {
+  language: 'auto',
   theme: 'dark',
   fontSize: 4,
   fontFamily: 'system-ui',
@@ -41,15 +46,22 @@ export const DEFAULT_SETTINGS: ReaderSettings = {
   minimalMode: false,
   showControls: true,
   compactControls: false,
+  uiHidden: false,
 };
 
 const SETTINGS_KEY = 'rsvp-reader-settings';
+
+const LEGACY_BLUE_ORP = '#4a9eff';
 
 export function loadSettings(): ReaderSettings {
   try {
     const stored = localStorage.getItem(SETTINGS_KEY);
     if (stored) {
-      return { ...DEFAULT_SETTINGS, ...JSON.parse(stored) };
+      const loaded = { ...DEFAULT_SETTINGS, ...JSON.parse(stored) };
+      if (loaded.orpColor?.toLowerCase() === LEGACY_BLUE_ORP) {
+        loaded.orpColor = DEFAULT_SETTINGS.orpColor;
+      }
+      return loaded;
     }
   } catch (e) {
     console.error('Failed to load settings:', e);

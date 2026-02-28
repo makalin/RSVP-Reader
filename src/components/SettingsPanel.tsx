@@ -1,18 +1,21 @@
 import React from 'react';
 import { ReaderSettings } from '../utils/settings';
 import { Slider } from '../ui/Slider';
+import { Locale, t as tt } from '../utils/i18n';
 import './SettingsPanel.css';
 
 interface SettingsPanelProps {
   settings: ReaderSettings;
   onSettingsChange: (settings: ReaderSettings) => void;
   onClose: () => void;
+  locale: Locale;
 }
 
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   settings,
   onSettingsChange,
   onClose,
+  locale,
 }) => {
   const updateSetting = <K extends keyof ReaderSettings>(
     key: K,
@@ -32,32 +35,47 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     'Palatino',
   ];
 
+  const t = (key: Parameters<typeof tt>[1]) => tt(locale, key);
+
   return (
     <div className="settings-overlay" onClick={onClose}>
       <div className="settings-panel" onClick={(e) => e.stopPropagation()}>
         <div className="settings-header">
-          <h2>Settings</h2>
+          <h2>{t('settings.title')}</h2>
           <button className="settings-close" onClick={onClose}>×</button>
         </div>
 
         <div className="settings-content">
           <section className="settings-section">
-            <h3>Theme & Display</h3>
+            <h3>{t('settings.themeAndDisplay')}</h3>
             <div className="settings-group">
               <label>
-                Theme:
+                {t('settings.language')}:
+                <select
+                  value={settings.language}
+                  onChange={(e) => updateSetting('language', e.target.value as any)}
+                >
+                  <option value="auto">{t('settings.auto')}</option>
+                  <option value="en">English</option>
+                  <option value="tr">Türkçe</option>
+                </select>
+              </label>
+            </div>
+            <div className="settings-group">
+              <label>
+                {t('settings.theme')}:
                 <select
                   value={settings.theme}
                   onChange={(e) => updateSetting('theme', e.target.value as any)}
                 >
-                  <option value="dark">Dark</option>
-                  <option value="light">Light</option>
-                  <option value="auto">Auto</option>
+                  <option value="dark">{t('settings.dark')}</option>
+                  <option value="light">{t('settings.light')}</option>
+                  <option value="auto">{t('settings.auto')}</option>
                 </select>
               </label>
             </div>
             <Slider
-              label="Font Size"
+              label={t('settings.fontSize')}
               value={settings.fontSize}
               min={2}
               max={8}
@@ -66,7 +84,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             />
             <div className="settings-group">
               <label>
-                Font Family:
+                {t('settings.fontFamily')}:
                 <select
                   value={settings.fontFamily}
                   onChange={(e) => updateSetting('fontFamily', e.target.value)}
@@ -84,12 +102,12 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.showORP}
                   onChange={(e) => updateSetting('showORP', e.target.checked)}
                 />
-                Show ORP (Optimal Recognition Point)
+                {t('settings.showOrp')}
               </label>
             </div>
             <div className="settings-group">
               <label>
-                ORP Color:
+                {t('settings.orpColor')}:
                 <input
                   type="color"
                   value={settings.orpColor}
@@ -100,9 +118,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           </section>
 
           <section className="settings-section">
-            <h3>Reading Speed</h3>
+            <h3>{t('settings.readingSpeed')}</h3>
             <Slider
-              label="Words Per Minute (WPM)"
+              label={t('settings.wpm')}
               value={settings.wpm}
               min={100}
               max={1200}
@@ -110,7 +128,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               onChange={(v) => updateSetting('wpm', v)}
             />
             <Slider
-              label="Chunk Size"
+              label={t('settings.chunkSize')}
               value={settings.chunkSize}
               min={1}
               max={4}
@@ -118,7 +136,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               onChange={(v) => updateSetting('chunkSize', v)}
             />
             <Slider
-              label="Punctuation Pause"
+              label={t('settings.punctuationPause')}
               value={settings.punctuationPause}
               min={0}
               max={2}
@@ -126,7 +144,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               onChange={(v) => updateSetting('punctuationPause', v)}
             />
             <Slider
-              label="Short Word Factor"
+              label={t('settings.shortWordFactor')}
               value={settings.shortWordFactor}
               min={0.5}
               max={1.2}
@@ -136,7 +154,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           </section>
 
           <section className="settings-section">
-            <h3>Advanced Options</h3>
+            <h3>{t('settings.advancedOptions')}</h3>
             <div className="settings-group">
               <label>
                 <input
@@ -144,7 +162,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.autoPauseOnPunctuation}
                   onChange={(e) => updateSetting('autoPauseOnPunctuation', e.target.checked)}
                 />
-                Auto-pause on punctuation
+                {t('settings.autoPauseOnPunctuation')}
               </label>
             </div>
             <div className="settings-group">
@@ -154,7 +172,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.highlightCurrentWord}
                   onChange={(e) => updateSetting('highlightCurrentWord', e.target.checked)}
                 />
-                Highlight current word
+                {t('settings.highlightCurrentWord')}
               </label>
             </div>
             <div className="settings-group">
@@ -164,7 +182,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.showProgress}
                   onChange={(e) => updateSetting('showProgress', e.target.checked)}
                 />
-                Show progress bar
+                {t('settings.showProgress')}
               </label>
             </div>
             <div className="settings-group">
@@ -174,13 +192,13 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.showStats}
                   onChange={(e) => updateSetting('showStats', e.target.checked)}
                 />
-                Show reading statistics
+                {t('settings.showReadingStats')}
               </label>
             </div>
           </section>
 
           <section className="settings-section">
-            <h3>UI Preferences</h3>
+            <h3>{t('settings.uiPreferences')}</h3>
             <div className="settings-group">
               <label>
                 <input
@@ -188,7 +206,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.minimalMode}
                   onChange={(e) => updateSetting('minimalMode', e.target.checked)}
                 />
-                Minimal mode
+                {t('settings.minimalMode')}
               </label>
             </div>
             <div className="settings-group">
@@ -198,7 +216,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.showControls}
                   onChange={(e) => updateSetting('showControls', e.target.checked)}
                 />
-                Show controls
+                {t('settings.showControls')}
               </label>
             </div>
             <div className="settings-group">
@@ -208,7 +226,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   checked={settings.compactControls}
                   onChange={(e) => updateSetting('compactControls', e.target.checked)}
                 />
-                Compact controls
+                {t('settings.compactControls')}
               </label>
             </div>
           </section>

@@ -17,6 +17,28 @@
   backdrop-filter: blur(10px);
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-lang {
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-surface, #1a1a1a);
+  border: 1px solid var(--border, #333);
+  border-radius: 8px;
+  color: var(--text-primary, #e0e0e0);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.app-lang:focus {
+  outline: none;
+  border-color: var(--accent, #e53935);
+}
+
 .app h1 {
   font-size: 2.5rem;
   color: var(--text-primary, #fff);
@@ -60,6 +82,14 @@
   justify-content: center;
 }
 
+.app-samples {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
 .app-button {
   padding: 0.75rem 2rem;
   font-size: 1rem;
@@ -79,7 +109,7 @@
 .app-button-primary:hover:not(:disabled) {
   background: var(--accent-hover, #ff5252);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
 }
 
 .app-button-secondary {
@@ -132,8 +162,8 @@
 .format-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(74, 158, 255, 0.1);
-  border: 1px solid rgba(74, 158, 255, 0.3);
+  background: rgba(229, 57, 53, 0.1);
+  border: 1px solid rgba(229, 57, 53, 0.3);
   border-radius: 6px;
   color: var(--accent, #e53935);
   font-size: 0.9rem;
@@ -179,6 +209,10 @@
 
   .app h1 {
     font-size: 2rem;
+  }
+
+  .app-header {
+    flex-direction: column;
   }
 
   .app-actions {

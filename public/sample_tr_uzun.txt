@@ -1,0 +1,80 @@
+Bugün İstanbul’da hava garipti. Sabah 07:12’de alarm çaldı, ama ben 07:13’te “bir dakika daha” diyerek telefonu susturdum. O bir dakika, klasik bir şekilde, on iki dakikaya dönüştü. Pencereyi açtım; dışarıdan ince bir uğultu, uzaktan bir vapur düdüğü, aşağıda ise acele adımlar… Bir de kedi kavgası. Tam bir şehir senfonisi.
+
+Mutfağa doğru yürürken ayaklarımın altındaki parke “tık-tık” diye ses çıkardı. Kahve makinesinin düğmesine bastım. Işık yandı. Suyu ısıtmayı beklerken, masanın üstündeki not defterini fark ettim. Dün gece, yarım uykuyla bir şeyler karalamışım:
+
+“Az kelime, çok hız. Odak. Ritm. Durak.”
+
+Bu not, kulağa şiir gibi geliyor ama aslında bir problemin özeti: Dikkat. Dağınık dikkat. Her yere zıplayan, hiçbir yere yerleşmeyen zihin.
+
+Kahve hazır olunca ilk yudumu aldım. “Acı ama doğru,” diye düşündüm. Tam o sırada telefon titredi. Mesaj, eski bir arkadaştan: “Bugün konuşalım mı?” Mesajın sonuna küçük bir gülen yüz koymuş. Şu emojiler… Bazen çok şey anlatıyor, bazen hiçbir şey.
+
+Masaya oturdum. Bilgisayarı açtım. Ekran parladı. Gözlerim, her sabahki gibi, önce sekmelere gitti: mail, takvim, notlar, yarım bırakılmış dokümanlar, bir köşede unutulmuş bir repo, bir de “sonra bakarım” klasörü. “Sonra” diye bir zaman var mı gerçekten? Varsa nerede?
+
+Bu düşüncelerle boğuşurken, önümdeki metni hızlı okumaya karar verdim. Normalde sayfa kaydırmak, satır satır gezmek zihnimi yoruyor. Göz, satırın başına dönüyor; satırın sonunu kaçırıyor; bir cümlede takılıp kalıyor; sonra bir anda beş paragraf ileri atlıyor. Bir şeyler okunuyor ama anlaşılmıyor. Anlaşılıyor gibi oluyor ama kalmıyor.
+
+Bu yüzden, kelimelerin tek tek akmasını seviyorum. Bir kelime. Sonra bir kelime daha. Gözün kaçacağı yer yok. “Nereye bakacağım?” sorusu ortadan kalkıyor. Sadece kelime var; kelime geçiyor; kelime kalıyor; kelime gidiyor. Arada bir nokta geliyor. Nokta, gerçekten “dur” diyor. Virgül, “nefes al” diyor. Ünlem ise “hey!” diye bağırıyor.
+
+Dışarıda korna sesi yükseldi. Ardından bir ambulans sireni. Sonra sessizlik. Şehir, bir anlığına kendini topladı. Ben de kendimi topladım.
+
+Şimdi sana bir hikâye anlatacağım. Bu hikâyede kısa kelimeler var: “ve”, “ile”, “ama”, “şu”, “bu”. Uzun kelimeler de var: “sürdürülebilirlik”, “karşılaştırılamaz”, “eşzamanlılaştırma”. Bazı kelimeler yabancı: “terminal”, “protocol”, “latency”, “render”. Bazıları sayı içeriyor: 3.14, 2026, 1/2, %87. Bazılarında parantez var (evet, bu parantez), bazılarında iki nokta üst üste: işte böyle. Tırnaklar da var: “tam olarak bu”.
+
+Çünkü test edeceğiz. Sadece okumayacağız; davranışı gözlemleyeceğiz.
+
+Bir gün, küçük bir atölyede, iki kişi tartışıyordu. Birincisi dedi ki: “Hız, her şey değildir.” İkincisi hemen cevap verdi: “Ama hız, bazen her şeydir.” Bu cümleler aynı gibi görünür, ama aralarında ince bir çizgi vardır. İlk cümle, temkinlidir. İkinci cümle, ısrarcıdır. Ve ikisi de, aslında, biraz haklıdır.
+
+Atölyenin duvarında eski bir poster asılıydı. Poster, solmuş bir kırmızıyla şunu yazıyordu: “Odaklan. Bitir. Yayınla.” Poster yıpranmıştı; köşeleri kalkmış, bantları sararmıştı. Buna rağmen, orada duruyordu. Sanki her gün aynı şeyi tekrar ediyordu: “Odaklan. Bitir. Yayınla.”
+
+Masada bir laptop vardı. Ekranda basit bir arayüz. Tek bir alan: metin girişi. Bir de tuşlar: başlat, durdur, geri sar, ileri sar. Hız ayarı: 100, 200, 400, 800, 1200. “1200 çok mu?” diye sordu biri. Diğeri güldü: “Beyin ısınınca, değil.”
+
+Sonra bir deneme yaptılar. İlk kelime ekranda belirdi: “Bugün”. Sonra: “deniyoruz”. Sonra: “gerçekten”. Sonra: “hızlı”. Sonra: “okumayı.” Ve her kelime, tam ortada kaldı. Göz, sağa kaçmadı. Sola kaçmadı. Sadece ortada durdu. Ekranın merkezi bir mıknatıs gibi çekiyordu.
+
+Bir süre sonra, küçük bir sorun fark ettiler. Noktalama işaretleri yok sayılınca, metin “makine tüfeği” gibi akıyordu. Bu iyi değildi. Çünkü beyin, cümlelerin sınırını sever. Beyin, durakları sever. Beyin, “tamam burada bitti” demeyi ister.
+
+O yüzden noktalama durakları eklediler. Nokta geldiğinde küçük bir ekstra bekleme. Virgül geldiğinde daha kısa bir bekleme. Soru işaretinde “bir an düşün” hissi. Ünlemde “vurgu” hissi.
+
+Sonra başka bir şey fark ettiler: kısa kelimeler. “ve”, “de”, “ki”… Bu kelimeler bir anda uçup gidince anlam parçalanıyordu. Çünkü kısa kelimeler küçük ama kritik taşlardır; cümleyi bir arada tutarlar. Bu yüzden kısa kelimelere minik bir telafi eklediler; yani biraz daha yavaş geçsinler diye bir çarpan.
+
+Bir ara kapı çaldı. İçeri üçüncü biri girdi. Elinde bir kâğıt vardı. Kâğıtta bir paragraf yazıyordu. “Bunu okuyabilir misiniz?” dedi. Paragraf şöyle başlıyordu:
+
+“Bazen insan, aynı cümleyi üç kez okur ve yine de anlamaz. Çünkü sorun cümlede değildir. Sorun, zihin gürültüsündedir.”
+
+Üçüncü kişi cümleyi bir kez okudu. Sonra bir kez daha. Sonra durdu. “Şu kısmı sevmedim,” dedi. “Hangi kısmı?” diye sordular. “Zihin gürültüsü,” dedi. “Çok doğru ama çok can yakıcı.”
+
+Atölyede küçük bir sessizlik oldu. Sonra bir kahkaha patladı. Çünkü bazen doğru olan şeyler gülünç şekilde rahatsız edicidir.
+
+Zaman geçti. Saat 10:05 oldu. Sonra 10:06. Sonra 10:07. Bu arada ekran hâlâ kelime kelime akıyordu. Bir noktada biri “geri sar” dedi. Geri sardılar. Bir cümleyi yeniden gördüler. Bu sefer daha netti. Çünkü tekrar, anlamı kristalize eder.
+
+“Tekrar” kelimesi, kötü bir şöhrete sahiptir. İnsanlar “tekrar”ı sıkıcı sanır. Oysa tekrar, öğrenmenin motorudur. Gitar çalan biri, aynı geçişi yüzlerce kez tekrar eder. Kod yazan biri, aynı hatayı on kez yapar. Sonra on birincide anlar. Sonra düzeltir. Sonra bir daha bozar. Sonra bir daha düzeltir. Bu bir döngüdür. Döngü olmadan gelişme olmaz.
+
+Metnin içinde bir liste daha var. Bunu da test için koyuyorum:
+
+1. Kısa kelimeler: ve, ya, ki, de, mi
+2. Uzun kelimeler: karşılaştırılamazlık, özelleştirilebilirlik, eşzamanlılaştırılabilir
+3. Sayılar: 0, 1, 2, 3, 10, 42, 256, 1024
+4. Semboller: % + - / * = @ #
+5. Kısaltmalar: API, UI, ORP, PDF, EPUB, WPM
+6. Tarih: 28.02.2026
+7. Saat: 09:00, 12:30, 23:59
+
+Şimdi bir diyalog daha:
+
+“Okuyor musun?”
+“Evet.”
+“Anlıyor musun?”
+“Bazen.”
+“Ne zaman?”
+“Durduğumda.”
+“Nasıl duruyorsun?”
+“Nokta gelince.”
+“Ya nokta gelmezse?”
+“O zaman ben nokta koyarım.”
+
+Bu, küçük bir şaka gibi, ama güzel bir ders verir: Okumak sadece hız değil, kontrol meselesidir. Kontrol sende değilse, hız seni sürükler. Kontrol sendeyse, hız bir araç olur. Araçlar da ancak sürücüyle anlamlıdır.
+
+Hikâyenin sonuna yaklaşırken şehir tekrar seslendi. Dışarıdan bir simitçinin sesi geldi: “Siiimit!” Ardından martılar. Martılar, her zaman aynı şeyi söyler: “Ben buradayım.” Bir süre sonra yağmur başladı. İnce ince. Camda küçük damlalar. Damlalar birleşti, aşağı süzüldü. Sanki zamanın kendisi akıyordu.
+
+Bilgisayar ekranında kelimeler akmaya devam etti. Ve ben şunu fark ettim: Eğer kelimeler akarken ben de nefes almayı unutmuyorsam, metin beni yormuyor. Eğer hız artınca nefesim sıkışıyorsa, hız fazla demektir. O zaman biraz düşürürüm. 600’den 450’ye. 450’den 350’ye. Çünkü amaç yarışmak değil; amaç taşımak: anlamı taşımak.
+
+Son cümle:
+
+Okuma, bir koşu değildir; daha çok bir yürüyüştür. Bazen hızlı, bazen yavaş. Ama her zaman, nereye gittiğini bilerek.
